@@ -1,0 +1,6 @@
+
+include 'planetsbooking-persistence'
+include 'planetsbooking-configuration'
+include 'planetsbooking-integration'
+include 'planetsbooking-service'
+include 'planetsbooking-controller'
