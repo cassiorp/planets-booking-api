@@ -3,3 +3,6 @@ server:
 
 planets:
   filter: 'http://localhost:8080/api/planets'
+
+starships:
+  filter: 'http://localhost:8081/api/starships'
