@@ -1,4 +1,4 @@
-package com.forttiori;
+package com.forttiori.Starships;
 
 import com.forttiori.Exceptions.StarshipNotFoundException;
 import com.forttiori.starships.Response.ResultStarshipsResponse;

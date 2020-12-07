@@ -1,0 +1,7 @@
+mongo:
+  image: mongo:latest
+  ports:
+    - 27017:27017
+  volumes:
+    - /home/forttiori/Docker/Volumes/MongoDB:/data/db
+

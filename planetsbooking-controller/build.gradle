@@ -1,4 +1,6 @@
 dependencies {
     implementation project(':planetsbooking-integration')
     implementation project(':planetsbooking-service')
+    implementation project(':planetsbooking-persistence')
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
 }

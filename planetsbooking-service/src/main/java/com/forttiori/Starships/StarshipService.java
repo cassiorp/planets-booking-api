@@ -1,4 +1,4 @@
-package com.forttiori;
+package com.forttiori.Starships;
 
 import com.forttiori.starships.Response.ResultStarshipsResponse;
 import com.forttiori.starships.Response.StarshipsInfoResponse;

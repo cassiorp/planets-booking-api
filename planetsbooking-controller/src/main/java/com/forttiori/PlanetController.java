@@ -1,5 +1,6 @@
 package com.forttiori;
 
+import com.forttiori.Planets.PlanetService;
 import com.forttiori.planets.Response.PlanetInfoResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

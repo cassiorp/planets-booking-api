@@ -1,4 +1,4 @@
-package com.forttiori;
+package com.forttiori.Planets;
 
 import com.forttiori.Exceptions.PlanetNotFoundException;
 import com.forttiori.planets.Response.PlanetInfoResponse;

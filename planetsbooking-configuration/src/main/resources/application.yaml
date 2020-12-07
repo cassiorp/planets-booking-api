@@ -6,3 +6,10 @@ planets:
 
 starships:
   filter: 'http://localhost:8081/api/starships'
+
+spring:
+  data:
+    mongodb:
+      database: banco
+      host: localhost
+      port: 27017
