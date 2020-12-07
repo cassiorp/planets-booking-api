@@ -1,7 +1,7 @@
 package com.forttiori.planets.Client;
 
 import com.forttiori.planets.Response.PlanetInfoResponse;
-import com.forttiori.planets.Response.ResultResponse;
+import com.forttiori.planets.Response.ResultPlanetsResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface PlanetClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/")
-    public ResultResponse getAllPlanets(@RequestParam("page") Integer page);
+    public ResultPlanetsResponse getAllPlanets(@RequestParam("page") Integer page);
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}/")
     public PlanetInfoResponse getPlanetsById(@PathVariable("id") Integer id);
 
     @RequestMapping(method = RequestMethod.GET, value = "/all/")
-    public ResultResponse getAllStarshipsWithoutPagination();
+    public ResultPlanetsResponse getAllPlanetsWithoutPagination();
 
 
 

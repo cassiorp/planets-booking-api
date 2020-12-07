@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResultResponse {
+public class ResultStarshipsResponse {
 
     private List<StarshipsInfoResponse> results = new ArrayList<>();
 

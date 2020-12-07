@@ -9,6 +9,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResultResponse {
+public class ResultPlanetsResponse {
     private List<PlanetInfoResponse> results;
 }
