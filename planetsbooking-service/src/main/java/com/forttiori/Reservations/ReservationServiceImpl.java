@@ -2,7 +2,9 @@ package com.forttiori.Reservations;
 
 import com.forttiori.DTO.ReservationDTO;
 import com.forttiori.Entity.Reservation;
+import com.forttiori.Planets.PlanetService;
 import com.forttiori.Repository.ReservationRepository;
+import com.forttiori.Starships.StarshipService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +16,13 @@ import java.util.Optional;
 public class ReservationServiceImpl implements ReservationService{
 
     private final ReservationRepository reservationRepository;
+    private final PlanetService planetService;
+    private final StarshipService starshipService;
 
     @Override
     public Reservation save(ReservationDTO reservationDTO) {
+        this.planetService.getPlanetsByName(reservationDTO.getPlanet());
+        this.starshipService.getStarshipByName(reservationDTO.getStarship());
         return this.reservationRepository.save(
                 new Reservation(reservationDTO.getPlanet(),
                                 reservationDTO.getStarship(),
@@ -30,6 +36,8 @@ public class ReservationServiceImpl implements ReservationService{
 
     @Override
     public Reservation upDate(String id, ReservationDTO reservationDTO) {
+        this.planetService.getPlanetsByName(reservationDTO.getPlanet());
+        this.starshipService.getStarshipByName(reservationDTO.getStarship());
         Optional<Reservation> reservation = this.reservationRepository.findById(id);
         reservation.get().setPlanet(reservationDTO.getPlanet());
         reservation.get().setStarship(reservationDTO.getStarship());
@@ -41,4 +49,6 @@ public class ReservationServiceImpl implements ReservationService{
     public void delete(String id) {
         this.reservationRepository.deleteById(id);
     }
+
+
 }

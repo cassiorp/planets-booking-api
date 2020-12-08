@@ -1,5 +1,6 @@
 package com.forttiori.Planets;
 
+import com.forttiori.Exceptions.PageNotFoundException;
 import com.forttiori.Exceptions.PlanetNotFoundException;
 import com.forttiori.planets.Response.PlanetInfoResponse;
 import com.forttiori.planets.Response.ResultPlanetsResponse;
@@ -19,7 +20,11 @@ public class PlanetServiceImpl implements PlanetService {
 
     @Override
     public ResultPlanetsResponse getAllPlanets(Integer page) {
-        return this.planetServiceIntegration.getAllPlanets(page);
+        try {
+            return this.planetServiceIntegration.getAllPlanets(page);
+        }catch (RuntimeException e) {
+            throw new PageNotFoundException(e.getMessage());
+        }
     }
 
     @Override
@@ -29,17 +34,20 @@ public class PlanetServiceImpl implements PlanetService {
 
     @Override
     public PlanetInfoResponse getPlanetById(Integer id) {
-        return this.planetServiceIntegration.getPlanetsById(id);
+        try {
+            return this.planetServiceIntegration.getPlanetsById(id);
+        }catch (RuntimeException e){
+            throw new PlanetNotFoundException(e.getMessage());
+        }
     }
 
     @Override
     public PlanetInfoResponse getPlanetsByName(String name) {
-       Optional<PlanetInfoResponse> nameFound = this.planetServiceIntegration.getAllPlanetsWithoutPagination()
+       return this.planetServiceIntegration.getAllPlanetsWithoutPagination()
                 .getResults().stream()
                 .filter(r -> r.getName().equals(name))
-                .findFirst();
-       if(nameFound.get() == null) throw new PlanetNotFoundException("Planeta não encontrado");
-       return nameFound.get();
+                .findFirst()
+                .orElseThrow(() -> new PlanetNotFoundException("Planeta não encontrado"));
     }
 
     @Override
