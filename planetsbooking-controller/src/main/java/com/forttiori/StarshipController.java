@@ -28,5 +28,4 @@ public class StarshipController {
         return this.starshipService.getStarshipById(id);
     }
 
-
 }

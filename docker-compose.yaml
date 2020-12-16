@@ -1,7 +1,52 @@
-mongo:
-  image: mongo:latest
-  ports:
-    - 27017:27017
-  volumes:
-    - /home/forttiori/Docker/Volumes/MongoDB:/data/db
+version: "3"
 
+services:
+
+  mongodb:
+    image: mongo:latest
+    container_name: "mongodb"
+    ports:
+      - 27017:27017
+    volumes:
+      - /home/forttiori/Docker/Volumes/MongoDB:/data/db
+    networks:
+      rede:
+        ipv4_address: 10.5.0.20
+
+  api:
+    image: planets-booking-api
+    container_name: planets-booking-api
+    ports:
+      - 8085:8085
+    depends_on:
+      - mongodb
+    networks:
+      rede:
+        ipv4_address: 10.5.0.15
+
+  planets-filter-api:
+    image: planets-filter-api
+    container_name: planets-filter-api
+    ports:
+      - 8080:8080
+    networks:
+      rede:
+        ipv4_address: 10.5.0.10
+
+  starships-filter-api:
+    image: starships-filter-api
+    container_name: starships-filter-api
+    ports:
+      - 8081:8081
+    networks:
+      rede:
+        ipv4_address: 10.5.0.5
+
+
+networks:
+  rede:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
