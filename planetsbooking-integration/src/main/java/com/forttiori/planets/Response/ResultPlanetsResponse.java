@@ -10,5 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResultPlanetsResponse {
+
     private List<PlanetInfoResponse> results;
+
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -53,12 +54,7 @@ public class PlanetServiceImpl implements PlanetService {
     @Override
     public ResultPlanetsResponse getAllPlanetsByClimate(String climate) {
         ResultPlanetsResponse resultPlanetsResponse = this.planetServiceIntegration.getAllPlanetsWithoutPagination();
-        List<PlanetInfoResponse> finalResponses = new ArrayList<>();
-        resultPlanetsResponse.getResults().stream()
-                .filter(r -> r.getClimate().equals(climate))
-                .forEach(r -> finalResponses.add(r));
-        resultPlanetsResponse.getResults().clear();
-        resultPlanetsResponse.setResults(finalResponses);
-        return resultPlanetsResponse;
+        resultPlanetsResponse.getResults().removeIf(r -> !r.getClimate().equals(climate));
+        return  resultPlanetsResponse;
     }
 }

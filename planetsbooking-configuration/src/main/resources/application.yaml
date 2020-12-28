@@ -2,17 +2,18 @@ server:
   port: 8085
 
 planets:
-  filter: 'http://10.5.0.10:8080/api/planets'
+  filter: 'http://localhost:8080/api/planets'
 
 starships:
-  filter: 'http://10.5.0.5:8081/api/starships'
+  filter: 'http://localhost:8081/api/starships'
 
 
 spring:
   data:
     mongodb:
       database: planets-db
-      host: mongodb
+#      host: mongodb
+      host: localhost
 
 feign:
   client:
