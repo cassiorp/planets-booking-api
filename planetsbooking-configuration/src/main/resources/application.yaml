@@ -8,13 +8,6 @@ starships:
   filter: 'http://10.5.0.5:8081/api/starships'
 
 
-#spring:
-#  data:
-#    mongodb:
-#      database: banco
-#      host: localhost
-#      port: 27017
-
 spring:
   data:
     mongodb:

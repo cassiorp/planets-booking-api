@@ -21,5 +21,4 @@ public interface PlanetClient {
     public ResultPlanetsResponse getAllPlanetsWithoutPagination();
 
 
-
 }
